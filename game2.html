@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="game2.css" />
+    <!-- <link src="game2.js" defer> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <div class="form-box">
+        <div class="form-value">
+          <div class="all">
+            <button id="btn">Generate a new word</button>
+            <br>
+            <h2>Type your spelling here</h2>
+            <div class="inputbox">
+                <input type="text" id="inp" />
+            </div>
+            <div class="cont">
+              <button id="speak" class="btn2">Listen</button>
+              <button class="btn2">Definition</button>
+              <button class="btn2">Use in a sentence</button>
+              <button id="sub" class="btn2">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  
+  <script>
+    let word;
+    const words = [
+      "abolish",
+      "absurd",
+      "access",
+      "accomplish",
+      "accustomed",
+      "achievement",
+      "adjective",
+      "admirable",
+      "admissible",
+      "adolescent",
+      "adornment",
+      "adventurous",
+      "Afghanistan",
+      "aggressive",
+      "Alabama",
+      "Algiers",
+      "alphabetically",
+      "alphabetized",
+      "alternate",
+      "altitude",
+      "alumnus",
+      "ambulance",
+      "Anchorage",
+      "Annapolis",
+      "antagonist",
+      "Antarctica",
+      "anticipation",
+      "antiquated",
+      "antiquity",
+      "antiseptic",
+      "antonym",
+      "anxious",
+      "apartheid",
+      "Appalachia",
+      "apparition",
+      "approximate",
+      "astound",
+      "Asuncion",
+      "athletics",
+      "atmosphere",
+      "absenteeism",
+      "cacophony",
+      "narcissus",
+      "bake",
+      "must",
+      "birthday",
+      "cacophonous",
+      "cadaverous",
+      "calamity",
+      "callow",
+      "candid",
+      "capitulate",
+      "capricious",
+      "caricature",
+      "cartographer",
+      "castigate",
+      "ebullient",
+      "eclectic",
+      "edible",
+      "edify",
+      "efface",
+      "effervescent",
+      "effulgent",
+      "egalitarian",
+      "egotistical",
+      "egregious",
+      "elated",
+      "macabre",
+      "machination",
+      "maculate",
+      "maelstrom",
+      "magnanimous",
+      "magniloquent",
+      "magnitude",
+      "maim",
+      "majestic",
+      "malady",
+      "malaise",
+    ];
+    document.getElementById("btn").addEventListener("click", function () {
+      num = Math.floor(Math.random() * 79);
+      word = words[num];
+
+      let voice = new SpeechSynthesisUtterance();
+      voice.text = word;
+      speechSynthesis.speak(voice);
+    });
+
+    document.getElementById("sub").addEventListener("click", function () {
+      if (document.getElementById("inp").value == word) {
+        alert("Congratulations! \nYou are CORRECT! \n10 points");
+      } else {
+        alert(`INCORRECT \nIt was * ${word} *\n0 Points\ntry again`);
+      }
+      document.getElementById("inp").value = "";
+    });
+
+    document.getElementById("speak").addEventListener("click", function () {
+      let voice = new SpeechSynthesisUtterance();
+      voice.text = word;
+      speechSynthesis.speak(voice);
+    });
+  </script>
+</html>
